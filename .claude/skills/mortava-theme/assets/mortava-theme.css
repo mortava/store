@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Mortava Theme — design tokens + base styles
+   Modeled on the cherre.com design language (dark-ink enterprise data
+   aesthetic, single cherry accent). See ../SKILL.md for usage rules.
+   ========================================================================== */
+
+:root {
+  /* ---- Color: core -------------------------------------------------- */
+  --mx-ink:                #0B1023;  /* deep ink-navy: hero, footer, dark bands */
+  --mx-ink-soft:           #151B36;  /* raised surfaces on dark */
+  --mx-ink-border:         #262D4F;  /* hairlines on dark */
+  --mx-surface:            #FFFFFF;  /* default page bg */
+  --mx-surface-alt:        #F5F6FA;  /* alternating light sections */
+  --mx-accent:             #E8404A;  /* cherry red — CTAs, links, highlights */
+  --mx-accent-strong:      #C82F3D;  /* hover / pressed */
+  --mx-accent-tint:        #FDECEE;  /* accent wash for badges on light */
+
+  /* ---- Color: text --------------------------------------------------- */
+  --mx-text:               #171C30;
+  --mx-text-muted:         #5B6178;
+  --mx-text-inverse:       #F7F8FC;
+  --mx-text-inverse-muted: #A7AEC8;
+
+  /* ---- Color: lines & focus ------------------------------------------ */
+  --mx-border:             #E4E7F0;
+  --mx-focus-ring:         #E8404A66;
+
+  /* ---- Color: data-viz (charts, stats) ------------------------------- */
+  --mx-viz-1: #E8404A;
+  --mx-viz-2: #3D5AFE;
+  --mx-viz-3: #14B8A6;
+  --mx-viz-4: #F59E0B;
+  --mx-viz-5: #8B5CF6;
+
+  /* ---- Gradients & glows --------------------------------------------- */
+  --mx-gradient-hero: radial-gradient(1200px 600px at 70% -10%,
+                      #232B5C 0%, var(--mx-ink) 60%);
+  --mx-glow-accent:   radial-gradient(400px 400px at 50% 50%,
+                      #E8404A22 0%, transparent 70%);
+
+  /* ---- Typography ----------------------------------------------------- */
+  --mx-font-display: "Poppins", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --mx-font-body:    "Inter", "Helvetica Neue", system-ui, sans-serif;
+
+  --mx-text-hero:    clamp(2.5rem, 5.5vw, 4.25rem);  /* 40–68px */
+  --mx-text-h2:      clamp(1.75rem, 3.2vw, 2.5rem);  /* 28–40px */
+  --mx-text-h3:      1.375rem;
+  --mx-text-body-lg: 1.125rem;
+  --mx-text-body:    1.0625rem;                       /* 17px */
+  --mx-text-small:   0.875rem;
+  --mx-text-eyebrow: 0.8125rem;                       /* uppercase labels */
+
+  --mx-leading-tight: 1.1;
+  --mx-leading-body:  1.65;
+  --mx-tracking-tight: -0.02em;
+  --mx-tracking-wide:  0.12em;   /* eyebrows, uppercase */
+
+  /* ---- Shape & elevation ---------------------------------------------- */
+  --mx-radius-card:   16px;
+  --mx-radius-media:  12px;
+  --mx-radius-pill:   999px;
+  --mx-shadow-card:   0 1px 2px #0B102308, 0 8px 24px #0B10230F;
+  --mx-shadow-float:  0 12px 40px #0B10231F;
+
+  /* ---- Spacing & layout ------------------------------------------------ */
+  --mx-space-section:    clamp(6rem, 10vw, 8rem);  /* 96–128px vertical */
+  --mx-space-section-sm: clamp(3.5rem, 6vw, 5rem);
+  --mx-container:        1200px;
+  --mx-gutter:           clamp(1.25rem, 4vw, 2.5rem);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --mx-ease:        cubic-bezier(0.22, 1, 0.36, 1);
+  --mx-duration:    200ms;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+.mx-page {
+  font-family: var(--mx-font-body);
+  font-size: var(--mx-text-body);
+  line-height: var(--mx-leading-body);
+  color: var(--mx-text);
+  background: var(--mx-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mx-h1, .mx-h2, .mx-h3 {
+  font-family: var(--mx-font-display);
+  font-weight: 600;
+  line-height: var(--mx-leading-tight);
+  letter-spacing: var(--mx-tracking-tight);
+  color: var(--mx-ink);
+}
+.mx-h1 { font-size: var(--mx-text-hero); }
+.mx-h2 { font-size: var(--mx-text-h2); }
+.mx-h3 { font-size: var(--mx-text-h3); }
+
+.mx-eyebrow {
+  font-size: var(--mx-text-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--mx-tracking-wide);
+  text-transform: uppercase;
+  color: var(--mx-accent);
+}
+
+.mx-container {
+  max-width: var(--mx-container);
+  margin-inline: auto;
+  padding-inline: var(--mx-gutter);
+}
+
+.mx-section       { padding-block: var(--mx-space-section); }
+.mx-section--alt  { background: var(--mx-surface-alt); }
+.mx-section--dark {
+  background: var(--mx-ink);
+  color: var(--mx-text-inverse);
+}
+.mx-section--dark .mx-h1,
+.mx-section--dark .mx-h2,
+.mx-section--dark .mx-h3 { color: var(--mx-text-inverse); }
+.mx-section--hero { background: var(--mx-gradient-hero); }
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+
+/* Buttons — always pills */
+.mx-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mx-font-body);
+  font-size: var(--mx-text-small);
+  font-weight: 600;
+  padding: 0.8em 1.8em;
+  border-radius: var(--mx-radius-pill);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--mx-duration) var(--mx-ease),
+              border-color var(--mx-duration) var(--mx-ease),
+              color var(--mx-duration) var(--mx-ease);
+}
+.mx-btn:focus-visible { outline: 3px solid var(--mx-focus-ring); outline-offset: 2px; }
+
+.mx-btn--primary { background: var(--mx-accent); color: #fff; }
+.mx-btn--primary:hover { background: var(--mx-accent-strong); }
+
+.mx-btn--ghost { border-color: var(--mx-border); color: var(--mx-text); background: transparent; }
+.mx-btn--ghost:hover { border-color: var(--mx-text-muted); }
+
+.mx-section--dark .mx-btn--ghost,
+.mx-btn--ghost-inverse { border-color: var(--mx-ink-border); color: var(--mx-text-inverse); }
+.mx-section--dark .mx-btn--ghost:hover { border-color: var(--mx-text-inverse-muted); }
+
+/* Cards */
+.mx-card {
+  background: var(--mx-surface);
+  border: 1px solid var(--mx-border);
+  border-radius: var(--mx-radius-card);
+  box-shadow: var(--mx-shadow-card);
+  padding: 2rem;
+}
+.mx-section--dark .mx-card {
+  background: var(--mx-ink-soft);
+  border-color: var(--mx-ink-border);
+  box-shadow: none;
+}
+
+/* Media frame — screenshots get a subtle browser-chrome treatment */
+.mx-media-frame {
+  border-radius: var(--mx-radius-media);
+  border: 1px solid var(--mx-border);
+  box-shadow: var(--mx-shadow-float);
+  overflow: hidden;
+}
+
+/* Stat */
+.mx-stat-value {
+  font-family: var(--mx-font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: var(--mx-tracking-tight);
+  color: var(--mx-accent);
+}
+.mx-stat-label {
+  font-size: var(--mx-text-small);
+  color: var(--mx-text-muted);
+}
+.mx-section--dark .mx-stat-label { color: var(--mx-text-inverse-muted); }
+
+/* Nav */
+.mx-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #FFFFFFF2;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--mx-border);
+}
+.mx-nav a { color: var(--mx-text); text-decoration: none; font-weight: 500; font-size: var(--mx-text-small); }
+.mx-nav a:hover { color: var(--mx-accent); }
+
+/* Links in running text */
+.mx-link { color: var(--mx-accent); text-decoration: none; font-weight: 500; }
+.mx-link:hover { color: var(--mx-accent-strong); text-decoration: underline; }

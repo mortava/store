@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortava — theme preview</title>
+<!-- Optional webfonts; the theme degrades gracefully to system fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Tokens + base (mirrors mortava-theme.css so this file is self-contained) */
+:root{
+--mx-ink:#0B1023;--mx-ink-soft:#151B36;--mx-ink-border:#262D4F;
+--mx-surface:#FFFFFF;--mx-surface-alt:#F5F6FA;
+--mx-accent:#E8404A;--mx-accent-strong:#C82F3D;--mx-accent-tint:#FDECEE;
+--mx-text:#171C30;--mx-text-muted:#5B6178;
+--mx-text-inverse:#F7F8FC;--mx-text-inverse-muted:#A7AEC8;
+--mx-border:#E4E7F0;--mx-focus-ring:#E8404A66;
+--mx-viz-1:#E8404A;--mx-viz-2:#3D5AFE;--mx-viz-3:#14B8A6;--mx-viz-4:#F59E0B;--mx-viz-5:#8B5CF6;
+--mx-gradient-hero:radial-gradient(1200px 600px at 70% -10%,#232B5C 0%,var(--mx-ink) 60%);
+--mx-font-display:"Poppins","Avenir Next","Segoe UI",system-ui,sans-serif;
+--mx-font-body:"Inter","Helvetica Neue",system-ui,sans-serif;
+--mx-text-hero:clamp(2.5rem,5.5vw,4.25rem);--mx-text-h2:clamp(1.75rem,3.2vw,2.5rem);
+--mx-text-h3:1.375rem;--mx-text-body-lg:1.125rem;--mx-text-body:1.0625rem;
+--mx-text-small:.875rem;--mx-text-eyebrow:.8125rem;
+--mx-radius-card:16px;--mx-radius-media:12px;--mx-radius-pill:999px;
+--mx-shadow-card:0 1px 2px #0B102308,0 8px 24px #0B10230F;
+--mx-shadow-float:0 12px 40px #0B10231F;
+--mx-space-section:clamp(6rem,10vw,8rem);--mx-container:1200px;
+--mx-gutter:clamp(1.25rem,4vw,2.5rem);--mx-ease:cubic-bezier(.22,1,.36,1);--mx-duration:200ms;
+}
+*{margin:0;box-sizing:border-box}
+body{font-family:var(--mx-font-body);font-size:var(--mx-text-body);line-height:1.65;
+color:var(--mx-text);background:var(--mx-surface);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--mx-font-display);font-weight:600;line-height:1.1;letter-spacing:-.02em;color:var(--mx-ink)}
+h1{font-size:var(--mx-text-hero)}h2{font-size:var(--mx-text-h2)}h3{font-size:var(--mx-text-h3)}
+.eyebrow{font-size:var(--mx-text-eyebrow);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mx-accent)}
+.container{max-width:var(--mx-container);margin-inline:auto;padding-inline:var(--mx-gutter)}
+.section{padding-block:var(--mx-space-section)}
+.section--alt{background:var(--mx-surface-alt)}
+.section--dark{background:var(--mx-ink);color:var(--mx-text-inverse)}
+.section--dark h1,.section--dark h2,.section--dark h3{color:var(--mx-text-inverse)}
+.section--hero{background:var(--mx-gradient-hero)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--mx-text-small);font-weight:600;
+padding:.8em 1.8em;border-radius:var(--mx-radius-pill);border:1.5px solid transparent;cursor:pointer;
+text-decoration:none;transition:all var(--mx-duration) var(--mx-ease)}
+.btn--primary{background:var(--mx-accent);color:#fff}.btn--primary:hover{background:var(--mx-accent-strong)}
+.btn--ghost{border-color:var(--mx-ink-border);color:var(--mx-text-inverse)}
+.btn--ghost:hover{border-color:var(--mx-text-inverse-muted)}
+.btn--ghost-light{border-color:var(--mx-border);color:var(--mx-text)}
+.card{background:var(--mx-surface);border:1px solid var(--mx-border);border-radius:var(--mx-radius-card);
+box-shadow:var(--mx-shadow-card);padding:2rem}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFFF2;backdrop-filter:blur(12px);border-bottom:1px solid var(--mx-border)}
+.nav a{color:var(--mx-text);text-decoration:none;font-weight:500;font-size:var(--mx-text-small)}
+.nav a:hover{color:var(--mx-accent)}
+.link{color:var(--mx-accent);text-decoration:none;font-weight:500}.link:hover{text-decoration:underline}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.stat-value{font-family:var(--mx-font-display);font-size:clamp(2rem,4vw,3rem);font-weight:600;letter-spacing:-.02em;color:var(--mx-accent)}
+.stat-label{font-size:var(--mx-text-small);color:var(--mx-text-inverse-muted)}
+.logo-strip span{font-family:var(--mx-font-display);font-weight:600;font-size:1.05rem;color:var(--mx-text-muted);opacity:.55}
+.media-frame{border-radius:var(--mx-radius-media);border:1px solid var(--mx-ink-border);box-shadow:var(--mx-shadow-float);overflow:hidden;background:var(--mx-ink-soft)}
+.two-col{display:grid;grid-template-columns:5fr 7fr;gap:4rem;align-items:center}
+@media(max-width:840px){.two-col{grid-template-columns:1fr}}
+footer a{color:var(--mx-text-inverse-muted);text-decoration:none;font-size:var(--mx-text-small)}
+footer a:hover{color:var(--mx-accent)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container" style="display:flex;align-items:center;gap:2.5rem;height:72px">
+    <a href="#" style="font-family:var(--mx-font-display);font-weight:600;font-size:1.3rem;color:var(--mx-ink)">mortava<span style="color:var(--mx-accent)">.</span></a>
+    <div style="display:flex;gap:2rem;margin-left:auto" class="navlinks">
+      <a href="#">Products</a><a href="#">Solutions</a><a href="#">Resources</a><a href="#">Company</a>
+    </div>
+    <a class="btn btn--primary" href="#">Book a demo</a>
+  </div>
+</nav>
+
+<header class="section section--dark section--hero" style="position:relative;overflow:hidden">
+  <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.25" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#A7AEC8" stroke-width="1">
+      <path d="M100 480 L340 380 L560 440 L820 330 L1080 400"/>
+      <path d="M340 380 L420 200 L820 330"/><path d="M560 440 L700 520 L1080 400"/>
+      <path d="M420 200 L760 120 L1080 190"/><path d="M760 120 L820 330"/>
+    </g>
+    <g fill="#E8404A"><circle cx="420" cy="200" r="5"/><circle cx="820" cy="330" r="5"/></g>
+    <g fill="#A7AEC8"><circle cx="100" cy="480" r="4"/><circle cx="340" cy="380" r="4"/><circle cx="560" cy="440" r="4"/>
+    <circle cx="1080" cy="400" r="4"/><circle cx="700" cy="520" r="4"/><circle cx="760" cy="120" r="4"/><circle cx="1080" cy="190" r="4"/></g>
+  </svg>
+  <div class="container" style="max-width:860px;text-align:center;position:relative">
+    <p class="eyebrow">Data platform</p>
+    <h1 style="margin:.75rem 0 1.25rem">Your data, made beautifully simple</h1>
+    <p style="font-size:var(--mx-text-body-lg);color:var(--mx-text-inverse-muted);max-width:560px;margin:0 auto 2rem">
+      Mortava unifies every source into a single, trusted foundation — so your team spends time on decisions, not data wrangling.
+    </p>
+    <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn--primary" href="#">Book a demo</a>
+      <a class="btn btn--ghost" href="#">Explore the platform</a>
+    </div>
+    <div class="media-frame" style="margin:4rem auto 0;max-width:860px">
+      <div style="display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--mx-ink-border)">
+        <span style="width:10px;height:10px;border-radius:50%;background:#3A4470"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#3A4470"></span>
+        <span style="width:10px;height:10px;border-radius:50%;background:#3A4470"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:180px 1fr;min-height:280px">
+        <div style="border-right:1px solid var(--mx-ink-border);padding:1rem;text-align:left">
+          <div style="height:8px;width:70%;background:#3A4470;border-radius:4px;margin-bottom:14px"></div>
+          <div style="height:8px;width:55%;background:var(--mx-accent);border-radius:4px;margin-bottom:14px"></div>
+          <div style="height:8px;width:65%;background:#3A4470;border-radius:4px;margin-bottom:14px"></div>
+          <div style="height:8px;width:50%;background:#3A4470;border-radius:4px"></div>
+        </div>
+        <div style="padding:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="background:var(--mx-ink);border:1px solid var(--mx-ink-border);border-radius:10px;padding:1rem">
+            <div style="display:flex;align-items:flex-end;gap:8px;height:110px">
+              <div style="flex:1;height:40%;background:var(--mx-viz-2);border-radius:4px 4px 0 0"></div>
+              <div style="flex:1;height:65%;background:var(--mx-viz-2);border-radius:4px 4px 0 0"></div>
+              <div style="flex:1;height:50%;background:var(--mx-viz-2);border-radius:4px 4px 0 0"></div>
+              <div style="flex:1;height:85%;background:var(--mx-viz-1);border-radius:4px 4px 0 0"></div>
+              <div style="flex:1;height:70%;background:var(--mx-viz-2);border-radius:4px 4px 0 0"></div>
+            </div>
+          </div>
+          <div style="background:var(--mx-ink);border:1px solid var(--mx-ink-border);border-radius:10px;padding:1rem;text-align:left">
+            <div style="font-family:var(--mx-font-display);font-size:2rem;font-weight:600;color:var(--mx-text-inverse)">98.4%</div>
+            <div style="font-size:.8rem;color:var(--mx-text-inverse-muted)">records resolved</div>
+            <svg viewBox="0 0 200 60" style="width:100%;margin-top:10px"><path d="M0 45 L30 40 L60 42 L90 30 L120 33 L150 18 L200 10" fill="none" stroke="var(--mx-viz-3)" stroke-width="2.5"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section style="padding-block:3rem;border-bottom:1px solid var(--mx-border)">
+  <div class="container logo-strip" style="text-align:center">
+    <p style="font-size:var(--mx-text-eyebrow);letter-spacing:.12em;text-transform:uppercase;color:var(--mx-text-muted);margin-bottom:1.25rem">Trusted by data-driven teams</p>
+    <div style="display:flex;gap:3rem;justify-content:center;flex-wrap:wrap">
+      <span>NORTHWIND</span><span>Atlas&nbsp;Group</span><span>meridian</span><span>KESTREL</span><span>Bluestone</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <p class="eyebrow" style="text-align:center">Why Mortava</p>
+    <h2 style="text-align:center;margin:.75rem auto 3rem;max-width:640px">One trusted foundation for every decision</h2>
+    <div class="grid3">
+      <div class="card"><h3>Connect everything</h3><p style="color:var(--mx-text-muted);margin-top:.5rem">Every source, feed, and spreadsheet resolved into a single model — automatically, continuously.</p><p style="margin-top:1rem"><a class="link" href="#">Learn more →</a></p></div>
+      <div class="card"><h3>Trust every number</h3><p style="color:var(--mx-text-muted);margin-top:.5rem">Built-in observability and validation, so quality issues surface before your stakeholders do.</p><p style="margin-top:1rem"><a class="link" href="#">Learn more →</a></p></div>
+      <div class="card"><h3>Move faster</h3><p style="color:var(--mx-text-muted);margin-top:.5rem">Ask questions in plain language and get governed, explainable answers in seconds.</p><p style="margin-top:1rem"><a class="link" href="#">Learn more →</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container two-col">
+    <div>
+      <p class="eyebrow">Unified model</p>
+      <h2 style="margin:.75rem 0 1rem">See your whole portfolio in one graph</h2>
+      <p style="color:var(--mx-text-muted)">Mortava's knowledge graph links every entity across your stack, so relationships that used to live in someone's head become queryable, shareable, and audit-ready.</p>
+      <p style="margin-top:1.25rem"><a class="link" href="#">Explore the data model →</a></p>
+    </div>
+    <div class="media-frame" style="border-color:var(--mx-border);background:var(--mx-surface-alt);padding:2.5rem">
+      <svg viewBox="0 0 480 260" style="width:100%" aria-hidden="true">
+        <g fill="none" stroke="#B9BfD4" stroke-width="1.2">
+          <path d="M60 200 L180 90 L300 160 L420 60"/><path d="M180 90 L300 40 L420 60"/><path d="M60 80 L180 90"/><path d="M300 160 L360 220"/>
+        </g>
+        <g fill="#E8404A"><circle cx="180" cy="90" r="7"/><circle cx="300" cy="160" r="7"/></g>
+        <g fill="#0B1023"><circle cx="60" cy="200" r="5"/><circle cx="60" cy="80" r="5"/><circle cx="300" cy="40" r="5"/><circle cx="420" cy="60" r="5"/><circle cx="360" cy="220" r="5"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center">
+    <div><div class="stat-value">1.2B</div><div class="stat-label">records unified</div></div>
+    <div><div class="stat-value">99.98%</div><div class="stat-label">pipeline uptime</div></div>
+    <div><div class="stat-value">4 wks</div><div class="stat-label">to full onboarding</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:760px;text-align:center">
+    <p style="font-family:var(--mx-font-display);font-size:var(--mx-text-h3);line-height:1.5;color:var(--mx-ink)">
+      “Mortava turned six systems of record into one source of truth. Our reporting cycle went from three weeks to one afternoon.”
+    </p>
+    <p style="margin-top:1.5rem;color:var(--mx-text-muted);font-size:var(--mx-text-small)">Head of Data Strategy · Atlas Group</p>
+  </div>
+</section>
+
+<section class="section section--dark" style="text-align:center">
+  <div class="container" style="max-width:680px">
+    <h2>Ready to see your data clearly?</h2>
+    <div style="display:flex;gap:.75rem;justify-content:center;margin-top:2rem;flex-wrap:wrap">
+      <a class="btn btn--primary" href="#">Book a demo</a>
+      <a class="btn btn--ghost" href="#">Talk to us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="section--dark" style="padding-block:4rem 2rem">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem">
+      <div>
+        <div style="font-family:var(--mx-font-display);font-weight:600;font-size:1.3rem">mortava<span style="color:var(--mx-accent)">.</span></div>
+        <p style="color:var(--mx-text-inverse-muted);font-size:var(--mx-text-small);margin-top:.75rem;max-width:260px">Data management made beautifully simple.</p>
+      </div>
+      <div><p style="font-weight:600;font-size:var(--mx-text-small);margin-bottom:.75rem">Products</p><p><a href="#">Platform</a></p><p><a href="#">Analytics</a></p><p><a href="#">Integrations</a></p></div>
+      <div><p style="font-weight:600;font-size:var(--mx-text-small);margin-bottom:.75rem">Company</p><p><a href="#">About</a></p><p><a href="#">Careers</a></p><p><a href="#">Contact</a></p></div>
+      <div><p style="font-weight:600;font-size:var(--mx-text-small);margin-bottom:.75rem">Resources</p><p><a href="#">Blog</a></p><p><a href="#">Guides</a></p><p><a href="#">Support</a></p></div>
+    </div>
+    <div style="border-top:1px solid var(--mx-ink-border);margin-top:3rem;padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+      <span style="color:var(--mx-text-inverse-muted);font-size:var(--mx-text-small)">© 2026 Mortava</span>
+      <span style="display:flex;gap:1.5rem"><a href="#">Privacy</a><a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
