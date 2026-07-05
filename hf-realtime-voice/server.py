@@ -429,4 +429,6 @@ async def session_end(request: Request):
 
 # Static front-end. Registered last so the /api routes win. `html=True` serves
 # index.html at "/". The repo is public anyway, so serving the dir is fine.
-app.mount("/", StaticFiles(directory=HERE, html=True), name="static")
+# check_dir=False: on serverless hosts (Vercel) the CDN serves the static files
+# and only /api/* reaches this app, whose bundle may not contain the directory.
+app.mount("/", StaticFiles(directory=HERE, html=True, check_dir=False), name="static")
